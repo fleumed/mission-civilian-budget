@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Monthly Budget Overview</title>
+
+<style>
+body{
+font-family: Arial;
+background:#f4f6f8;
+}
+
+.container{
+width:460px;
+margin:40px auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+h3{
+margin-top:25px;
+border-bottom:1px solid #ddd;
+padding-bottom:5px;
+}
+
+label{
+display:block;
+margin-top:10px;
+font-weight:bold;
+}
+
+input{
+width:100%;
+padding:8px;
+margin-top:4px;
+}
+
+.results{
+margin-top:25px;
+background:#f0f0f0;
+padding:15px;
+font-weight:bold;
+border-radius:6px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Monthly Budget Overview</h2>
+
+<h3>Income</h3>
+
+<label>Primary Pay</label>
+<input id="income1" type="number" oninput="calculate()">
+
+<label>Spouse Income</label>
+<input id="income2" type="number" oninput="calculate()">
+
+<label>Other Income</label>
+<input id="income3" type="number" oninput="calculate()">
+
+
+<h3>Expenses</h3>
+
+<label>Rent / Mortgage</label>
+<input id="rent" type="number" oninput="calculate()">
+
+<label>Utilities</label>
+<input id="utilities" type="number" oninput="calculate()">
+
+<label>Internet</label>
+<input id="internet" type="number" oninput="calculate()">
+
+<label>Phone</label>
+<input id="phone" type="number" oninput="calculate()">
+
+<label>Car Payment</label>
+<input id="carpay" type="number" oninput="calculate()">
+
+<label>Car Insurance</label>
+<input id="carins" type="number" oninput="calculate()">
+
+<label>Gas</label>
+<input id="gas" type="number" oninput="calculate()">
+
+<label>Groceries</label>
+<input id="groceries" type="number" oninput="calculate()">
+
+<label>Eating Out</label>
+<input id="eatout" type="number" oninput="calculate()">
+
+<label>Subscriptions</label>
+<input id="subs" type="number" oninput="calculate()">
+
+<label>Debt Payments</label>
+<input id="debt" type="number" oninput="calculate()">
+
+<label>Entertainment</label>
+<input id="ent" type="number" oninput="calculate()">
+
+<label>Savings</label>
+<input id="savings" type="number" oninput="calculate()">
+
+<label>Investments</label>
+<input id="invest" type="number" oninput="calculate()">
+
+<label>Kids Tuition</label>
+<input id="tuition" type="number" oninput="calculate()">
+
+<label>Kids Daycare</label>
+<input id="daycare" type="number" oninput="calculate()">
+
+<label>Weekend Childcare</label>
+<input id="weekendcare" type="number" oninput="calculate()">
+
+<label>Social Security Payment</label>
+<input id="socialsecurity" type="number" oninput="calculate()">
+
+<label>Other</label>
+<input id="other" type="number" oninput="calculate()">
+
+
+<div class="results">
+
+<div id="totalIncome">Total Monthly Income: $0</div>
+<div id="totalExpenses">Total Monthly Expenses: $0</div>
+<div id="balance">Remaining Balance: $0</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function get(id){
+return parseFloat(document.getElementById(id).value) || 0;
+}
+
+function calculate(){
+
+let totalIncome =
+get("income1") +
+get("income2") +
+get("income3");
+
+let totalExpenses =
+get("rent") +
+get("utilities") +
+get("internet") +
+get("phone") +
+get("carpay") +
+get("carins") +
+get("gas") +
+get("groceries") +
+get("eatout") +
+get("subs") +
+get("debt") +
+get("ent") +
+get("savings") +
+get("invest") +
+get("tuition") +
+get("daycare") +
+get("weekendcare") +
+get("socialsecurity") +
+get("other");
+
+let balance = totalIncome - totalExpenses;
+
+document.getElementById("totalIncome").innerText =
+"Total Monthly Income: $" + totalIncome.toLocaleString();
+
+document.getElementById("totalExpenses").innerText =
+"Total Monthly Expenses: $" + totalExpenses.toLocaleString();
+
+document.getElementById("balance").innerText =
+"Remaining Balance: $" + balance.toLocaleString();
+
+}
+
+</script>
+
+</body>
+</html>
